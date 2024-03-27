@@ -2,86 +2,9 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Table from '$lib/components/ui/table';
 
-	type watchedFilm = {
-		film_name: string;
-		film_length: string;
-		imdb_rating: string;
-		release_year: string;
-		is_rewatchable: boolean;
-	};
-
-	const watchedFilms: watchedFilm[] = [
-		{
-			film_name: 'Dune part one',
-			film_length: '2h 35m',
-			imdb_rating: '8.0/10',
-			release_year: '2021',
-			is_rewatchable: false
-		},
-		{
-			film_name: 'Dune part two',
-			film_length: '2h 46m',
-			imdb_rating: '8.9/10',
-			release_year: '2024',
-			is_rewatchable: false
-		},
-		{
-			film_name: 'The Last Samurai',
-			film_length: '2h 34m',
-			imdb_rating: '7.8/10',
-			release_year: '2003',
-			is_rewatchable: true
-		},
-		{
-			film_name: 'My Neighbor Totoro',
-			film_length: '1h 26m',
-			imdb_rating: '8.1/10',
-			release_year: '1988',
-			is_rewatchable: false
-		},
-		{
-			film_name: 'Dune part one',
-			film_length: '2h 35m',
-			imdb_rating: '8.0/10',
-			release_year: '2021',
-			is_rewatchable: false
-		},
-		{
-			film_name: 'Dune part two',
-			film_length: '2h 46m',
-			imdb_rating: '8.9/10',
-			release_year: '2024',
-			is_rewatchable: false
-		},
-		{
-			film_name: 'The Last Samurai',
-			film_length: '2h 34m',
-			imdb_rating: '7.8/10',
-			release_year: '2003',
-			is_rewatchable: true
-		},
-		{
-			film_name: 'My Neighbor Totoro',
-			film_length: '1h 26m',
-			imdb_rating: '8.1/10',
-			release_year: '1988',
-			is_rewatchable: false
-		},
-		{
-			film_name: 'The Last Samurai',
-			film_length: '2h 34m',
-			imdb_rating: '7.8/10',
-			release_year: '2003',
-			is_rewatchable: true
-		},
-		{
-			film_name: 'My Neighbor Totoro',
-			film_length: '1h 26m',
-			imdb_rating: '8.1/10',
-			release_year: '1988',
-			is_rewatchable: false
-		}
-	];
+    import type { PageData } from './$types';
+    
+    export let data: PageData;
 </script>
 
 <div class="grid">
@@ -112,7 +35,7 @@
 						</Table.Row>
 					</Table.Header>
 					<Table.Body>
-						{#each watchedFilms as film}
+						{#each data.film_list as film}
 							<Table.Row>
 								<Table.Cell class="font-medium">{film.film_name}</Table.Cell>
 								<Table.Cell>{film.film_length}</Table.Cell>
@@ -145,7 +68,7 @@
 						</Table.Row>
 					</Table.Header>
 					<Table.Body>
-						{#each watchedFilms as film}
+						{#each data.film_list as film}
 							{#if film.is_rewatchable}
 								<Table.Row>
 									<Table.Cell class="font-medium">{film.film_name}</Table.Cell>
@@ -174,7 +97,7 @@
 						</Table.Row>
 					</Table.Header>
 					<Table.Body>
-						{#each watchedFilms as film}
+						{#each data.film_list as film}
 							{#if !film.is_rewatchable}
 								<Table.Row>
 									<Table.Cell class="font-medium">{film.film_name}</Table.Cell>
